@@ -57,7 +57,7 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 300 }, // Adjust gravity as needed
-            debug: true // Set to true to show debug outlines for physics bodies
+            debug: false // Set to true to show debug outlines for physics bodies
         }
     },
     input: {

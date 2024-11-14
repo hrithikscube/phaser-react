@@ -7,7 +7,9 @@ export class MainMenu extends Scene {
     }
 
     preload() {
-        this.load.image('guy', 'assets/guy.png');
+        this.load.image('guy', 'assets/guy.svg');
+        this.load.image('guy-right', 'assets/guy-right.svg');
+        this.load.image('guy-left', 'assets/guy-left.svg');
         this.load.image('brick', 'assets/brick.avif');
     }
 
@@ -46,26 +48,27 @@ export class MainMenu extends Scene {
             return; // Exit if guy sprite is not found
         }
 
-        // Reset horizontal velocity before checking input
         guy.setVelocityX(0);
 
-        // Maintain current vertical velocity (e.g., gravity or jumping)
         guy.setVelocityY(guy.body.velocity.y);
 
+        // right
         if (this.keys.d.isDown) {
-
             guy.setVelocityX(160); // Whatever you want
-
+            guy.setTexture('guy-right')
         }
 
-        if (this.keys.space.isDown && guy.body.touching.down) {
-            guy.setVelocityY(-500); // Jump if on the ground
+        // jump
+        if (this.keys.space.isDown) {
+            guy.setVelocityY(-200); // Jump if on the ground
+            guy.setTexture('guy')
         }
 
+
+        // left
         else if (this.keys.a.isDown) {
-
             guy.setVelocityX(-160); // Whatever you want
-
+            guy.setTexture('guy-left')
         }
 
     }
